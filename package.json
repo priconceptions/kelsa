@@ -1,0 +1,43 @@
+{
+  "name": "kelsa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "postbuild": "next-on-netlify",
+    "lint": "eslint . --ext .json --ext .js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{html,js,json,md,mdx,mjs,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.3.3",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "framer-motion": "^3.3.0",
+    "next": "10.0.7",
+    "next-auth": "^3.4.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-get-off-my-lawn": "5.0.1",
+    "globby": "11.0.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.1.2",
+    "prettier": "2.0.2",
+    "rehype": "^11.0.0"
+  }
+}
