@@ -82,7 +82,6 @@ const Subscribe = ({ heading, message }) => {
       <InputGroup size="lg">
         <Input
           bg="whiteAlpha.900"
-          pr="4.5rem"
           type={'text'}
           placeholder="Your email..."
           focusBorderColor="blue.400"
@@ -97,13 +96,14 @@ const Subscribe = ({ heading, message }) => {
           // p={}
           px={1}
           fontWeight="bold"
-          bg="blue.600"
+          whiteSpace={['normal', 'nowrap']}
+          bg="blue.500"
           color="whiteAlpha.900"
           w="inherit"
           isLoading={loading}
           onClick={submitEmail}
         >
-          Get Early Access
+          {message}
         </Button>
       </InputGroup>
     </Box>
