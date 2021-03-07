@@ -17,12 +17,32 @@ import {
   Heading
 } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
+import { Octokit } from '@octokit/core';
+import { createAppAuth } from '@octokit/auth-app';
 
 const Settings = ({ user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log(process.env.GITHUB_CLIENT_ID);
+  const appOctokit = new Octokit({
+    authStrategy: createAppAuth,
+    auth: {
+      appId: parseInt(102043, 10),
+      privateKey: '',
+      clientId: '',
+      clientSecret: ''
+    }
+  });
 
-  const repoList = async () => {};
-  repoList();
+  const data = async () => await appOctokit.request('/app');
+
+  const repoList = async () => {
+    const repos = await appOctokit.request('GET /orgs/{org}/repos', {
+      org: `${user}`
+    });
+    return repos;
+  };
+  console.log(data(), repoList());
+
   return (
     <>
       <Button
